@@ -145,15 +145,12 @@ class AnnouncementsServiceProvider extends BaseAddonServiceProvider
         /** @var SettingsService $settings */
         $settings = $this->app->make('settings');
         
-        // Create dedicated "Announcements" card in admin settings
+        // Create dedicated "Announcements" card in admin settings (same pattern as store, helpdesk, etc.)
         $settings->addCard(
             'announcements',
             'announcements::messages.admin.title',
             'announcements::messages.admin.description',
-            50, // Order (after other cards)
-            null,
-            true,
-            3 // 3 columns
+            50 // Order (after other cards)
         );
         
         // Add items to the announcements card
