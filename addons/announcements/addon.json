@@ -1,0 +1,13 @@
+{
+    "name": "Announcements",
+    "description": "Complete announcement system with categories, statistics, and SEO management",
+    "uuid": "announcements",
+    "version": "1.0.0",
+    "author": {
+        "name": "By-Hoster",
+        "email": "t.vinsonneau@by-hoster.com"
+    },
+    "providers": [
+        "App\\Addons\\Announcements\\AnnouncementsServiceProvider"
+    ]
+}

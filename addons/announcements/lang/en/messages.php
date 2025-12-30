@@ -1,0 +1,259 @@
+<?php
+
+/*
+ * This file is part of the CLIENTXCMS project.
+ * This file is the property of the CLIENTXCMS association. Any unauthorized use, reproduction, or download is prohibited.
+ * For more information, please consult our support: clientxcms.com/client/support.
+ * Year: 2024
+ */
+
+return [
+    'staff' => 'Staff',
+    'media' => 'Media',
+    'danger_zone' => 'Danger zone',
+    'all' => 'All',
+    
+    'statuses' => [
+        'draft' => 'Draft',
+        'published' => 'Published',
+        'scheduled' => 'Scheduled',
+        'archived' => 'Archived',
+    ],
+    
+    'admin' => [
+        'title' => 'Announcements',
+        'description' => 'Manage announcements and news for your website.',
+        'widget_title' => 'Published announcements',
+        'create_title' => 'Create announcement',
+        'create_subtitle' => 'Create a new announcement for your visitors.',
+        'edit_title' => 'Edit announcement',
+        'edit_subtitle' => 'Edit announcement information.',
+        'stats_title' => 'Announcement statistics',
+        'reorder_title' => 'Reorder announcements',
+        'reorder_subtitle' => 'Drag and drop to reorder display order.',
+        
+        'fields' => [
+            'title' => 'Title',
+            'slug' => 'Slug (URL)',
+            'excerpt' => 'Excerpt',
+            'excerpt_help' => 'Short summary displayed in lists.',
+            'content' => 'Content',
+            'editor_mode' => 'Editor mode',
+            'status' => 'Status',
+            'published_at' => 'Publication date',
+            'featured' => 'Featured',
+            'featured_help' => 'Featured announcements appear first.',
+            'position' => 'Position',
+            'cover_image' => 'Cover image',
+            'cover_image_help' => 'Recommended dimensions: 1200×630 pixels (ratio 1.91:1). Max 5 MB.',
+            'cover_image_url' => 'OR Image URL',
+            'cover_image_url_help' => 'Alternative to upload: paste an external image URL.',
+            'og_image_url' => 'OR OG Image URL',
+            'og_image_url_help' => 'Alternative to upload: paste an external image URL.',
+            'category' => 'Category',
+            'show_author' => 'Show author',
+            'author' => 'Author',
+            'views' => 'Views',
+            'likes' => 'Likes',
+        ],
+        
+        'seo' => [
+            'title' => 'SEO',
+            'meta_title' => 'Meta title',
+            'meta_title_help' => 'Leave empty to use default title.',
+            'meta_description' => 'Meta description',
+            'meta_description_help' => 'Leave empty to use excerpt.',
+            'meta_keywords' => 'Keywords',
+            'meta_keywords_help' => 'Separate keywords with commas.',
+            'og_image' => 'OpenGraph image',
+            'og_image_help' => 'Image displayed when sharing on social media.',
+            'og_image_dimensions' => 'Recommended dimensions: 1200×630 pixels.',
+            'canonical_url' => 'Canonical URL',
+            'robots' => 'Robots',
+        ],
+        
+        'editor_modes' => [
+            'markdown' => 'Markdown (WYSIWYG)',
+            'html' => 'HTML (Monaco Editor)',
+        ],
+        
+        'actions' => [
+            'preview' => 'Preview',
+            'duplicate' => 'Duplicate',
+            'publish' => 'Publish',
+            'unpublish' => 'Unpublish',
+            'stats' => 'Statistics',
+            'reorder' => 'Reorder',
+            'remove_cover' => 'Remove image',
+        ],
+        
+        'duplicated' => 'Announcement duplicated successfully.',
+        'published' => 'Announcement published successfully.',
+        'unpublished' => 'Announcement unpublished successfully.',
+        'cover_removed' => 'Cover image removed.',
+        
+        'stats' => [
+            'total_views' => 'Total views',
+            'unique_views' => 'Unique views',
+            'total_likes' => 'Total likes',
+            'views_chart' => 'Views over time',
+            'likes_chart' => 'Likes over time',
+            'top_referers' => 'Top referrers',
+            'export_csv' => 'Export CSV',
+            'period' => 'Period',
+            'periods' => [
+                '7d' => 'Last 7 days',
+                '30d' => 'Last 30 days',
+                '90d' => 'Last 90 days',
+                '1y' => 'This year',
+            ],
+        ],
+    ],
+    
+    'categories' => [
+        'title' => 'Announcement categories',
+        'description' => 'Manage categories to organize your announcements.',
+        'create_title' => 'Create category',
+        'create_subtitle' => 'Create a new announcement category.',
+        'edit_title' => 'Edit category',
+        'edit_subtitle' => 'Edit category information.',
+        'reorder_title' => 'Reorder categories',
+        
+        'fields' => [
+            'name' => 'Name',
+            'slug' => 'Slug',
+            'description' => 'Description',
+            'color' => 'Color',
+            'icon' => 'Icon',
+            'position' => 'Position',
+            'is_active' => 'Active',
+            'announcements_count' => 'Announcements count',
+        ],
+        
+        'has_announcements' => 'This category contains announcements and cannot be deleted.',
+    ],
+    
+    'settings' => [
+        'title' => 'Announcements settings',
+        'description' => 'General settings for the announcements module.',
+        'updated' => 'Settings updated successfully.',
+        
+        'sections' => [
+            'general' => 'General',
+            'display' => 'Display',
+            'publication' => 'Publication',
+            'seo' => 'SEO',
+            'tracking' => 'Tracking & Stats',
+            'likes' => 'Likes system',
+        ],
+        
+        'fields' => [
+            'enabled' => 'Module enabled',
+            'enabled_help' => 'Enable or disable the announcements module.',
+            'likes_enabled' => 'Enable likes',
+            'likes_enabled_help' => 'Allow visitors to like announcements.',
+            'likes_mode' => 'Likes mode',
+            'likes_mode_help' => 'Define who can like announcements.',
+            'likes_modes' => [
+                'all' => 'Everyone (IP + Users)',
+                'authenticated' => 'Logged in users only',
+                'ip' => 'By IP address only',
+            ],
+            'likes_authenticated_only' => 'Likes for authenticated users only',
+            'show_views' => 'Show view count',
+            'show_author' => 'Show author',
+            'show_date' => 'Show date',
+            'show_featured' => 'Highlight featured announcements',
+            'scheduling_enabled' => 'Enable scheduling',
+            'per_page' => 'Announcements per page',
+            'default_order' => 'Default sort order',
+            'default_orders' => [
+                'featured_position_date' => 'Featured > Position > Date',
+                'position_date' => 'Position > Date',
+                'date' => 'Date only',
+            ],
+            'seo_title_template' => 'SEO title template',
+            'seo_title_template_help' => 'Variables: {title}, {site_name}',
+            'default_meta_description' => 'Default meta description',
+            'default_og_image' => 'Default OG image (URL)',
+            'view_mode' => 'View counting mode',
+            'view_modes' => [
+                'total' => 'Simple total',
+                'unique' => 'Unique visitors (IP)',
+                'authenticated' => 'Authenticated users only',
+            ],
+            'view_window' => 'Anti-refresh window (minutes)',
+            'view_window_help' => 'Minimum time between two views from same visitor.',
+            'anonymous_name' => 'Anonymous author name',
+            'public_url' => 'Public URL',
+            'public_url_help' => 'Base URL (e.g., announcements, news, blog).',
+        ],
+        
+        'global_stats' => [
+            'title' => 'Global statistics (last 30 days)',
+            'total_announcements' => 'Total announcements',
+            'published_announcements' => 'Published announcements',
+            'total_views' => 'Total views',
+            'total_likes' => 'Total likes',
+            'most_viewed' => 'Most viewed',
+            'most_liked' => 'Most liked',
+        ],
+    ],
+    
+    'front' => [
+        'title' => 'Announcements',
+        'all_announcements' => 'All announcements',
+        'search_placeholder' => 'Search announcements...',
+        'no_results' => 'No announcements found.',
+        'load_more' => 'Load more',
+        'back_to_list' => 'Back to announcements',
+        'share' => 'Share',
+        'views' => '{0} :count view|{1} :count view|[2,*] :count views',
+        'likes' => 'like|likes',
+        'published_on' => 'Published on',
+        'by' => 'by',
+        'related' => 'Related announcements',
+        'previous' => 'Previous',
+        'next' => 'Next',
+        'all_categories' => 'All categories',
+        'featured' => 'Featured',
+        'read_more' => 'Read more',
+        'no_content' => 'No content available.',
+        'likes_disabled' => 'Likes are disabled.',
+        'login_required' => 'You must be logged in to like this announcement.',
+        'like_added' => 'You liked this announcement.',
+        'like_removed' => 'You no longer like this announcement.',
+        'login_redirect' => 'Would you like to log in?',
+        'link_copied' => 'Link copied to clipboard!',
+        'copy_link' => 'Copy this link:',
+    ],
+    
+    'validation' => [
+        'slug_format' => 'The slug may only contain lowercase letters, numbers, and dashes.',
+        'slug_unique' => 'This slug is already in use.',
+        'image_too_large' => 'The image must not exceed 5 MB.',
+        'invalid_image' => 'The file must be a valid image.',
+        'invalid_image_format' => 'Image format not supported. Use: JPEG, PNG, GIF or WebP.',
+        'color_format' => 'The color must be in hexadecimal format (#RRGGBB).',
+    ],
+    
+    'api' => [
+        'announcements' => 'Announcements',
+        'categories' => 'Announcement Categories',
+        'not_found' => 'Announcement not found.',
+        'category_not_found' => 'Category not found.',
+        'created' => 'Announcement created successfully.',
+        'updated' => 'Announcement updated successfully.',
+        'deleted' => 'Announcement deleted successfully.',
+        'published' => 'Announcement published successfully.',
+        'unpublished' => 'Announcement unpublished successfully.',
+    ],
+    
+    'components' => [
+        'latest' => [
+            'title' => 'Latest announcements',
+            'view_all' => 'View all announcements',
+            'no_announcements' => 'No announcements yet.',
+        ],
+    ],
+];

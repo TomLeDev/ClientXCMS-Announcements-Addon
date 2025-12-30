@@ -1,0 +1,17 @@
+{
+    "name": "clientxcms/announcements",
+    "description": "Announcements management addon for ClientXCMS",
+    "type": "clientxcms-addon",
+    "require": {
+        "php": ">=8.1"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "platform-check": false
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Addons\\Announcements\\": "src/"
+        }
+    }
+}
