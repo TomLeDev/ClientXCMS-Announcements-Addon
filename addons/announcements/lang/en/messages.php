@@ -125,6 +125,7 @@ return [
             'description' => 'Description',
             'color' => 'Color',
             'icon' => 'Icon',
+            'icon_help' => 'Bootstrap Icons class (e.g., bi bi-star, bi bi-megaphone)',
             'position' => 'Position',
             'is_active' => 'Active',
             'announcements_count' => 'Announcements count',

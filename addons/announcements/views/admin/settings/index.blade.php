@@ -22,7 +22,6 @@
                             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">{{ __($translatePrefix . '.sections.general') }}</h3>
                         </div>
                         <div class="p-4 space-y-4">
-                            @include('admin/shared/checkbox', ['name' => 'announcements_enabled', 'label' => __($translatePrefix . '.fields.enabled'), 'checked' => setting('announcements_enabled', true), 'help' => __($translatePrefix . '.fields.enabled_help')])
                             <div>
                                 @include('admin/shared/input', ['name' => 'announcements_public_url', 'label' => __($translatePrefix . '.fields.public_url'), 'value' => setting('announcements_public_url', 'announcements'), 'help' => __($translatePrefix . '.fields.public_url_help')])
                             </div>

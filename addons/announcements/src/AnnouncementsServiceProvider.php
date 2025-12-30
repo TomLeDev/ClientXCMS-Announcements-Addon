@@ -145,9 +145,20 @@ class AnnouncementsServiceProvider extends BaseAddonServiceProvider
         /** @var SettingsService $settings */
         $settings = $this->app->make('settings');
         
-        // Add to personalization card - Announcements list
+        // Create dedicated "Announcements" card in admin settings
+        $settings->addCard(
+            'announcements',
+            'announcements::messages.admin.title',
+            'announcements::messages.admin.description',
+            50, // Order (after other cards)
+            null,
+            true,
+            3 // 3 columns
+        );
+        
+        // Add items to the announcements card
         $settings->addCardItem(
-            'personalization',
+            'announcements',
             'announcements_list',
             'announcements::messages.admin.title',
             'announcements::messages.admin.description',
@@ -156,9 +167,8 @@ class AnnouncementsServiceProvider extends BaseAddonServiceProvider
             Permission::MANAGE_EXTENSIONS
         );
         
-        // Add to personalization card - Categories
         $settings->addCardItem(
-            'personalization',
+            'announcements',
             'announcement_categories',
             'announcements::messages.categories.title',
             'announcements::messages.categories.description',
@@ -167,9 +177,8 @@ class AnnouncementsServiceProvider extends BaseAddonServiceProvider
             Permission::MANAGE_EXTENSIONS
         );
         
-        // Add to personalization card - Settings
         $settings->addCardItem(
-            'personalization',
+            'announcements',
             'announcements_settings',
             'announcements::messages.settings.title',
             'announcements::messages.settings.description',

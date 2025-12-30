@@ -31,7 +31,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 pt-0">
                     <div>@include('admin/shared/input', ['name' => 'color', 'label' => __('announcements::messages.categories.fields.color'), 'value' => old('color', $item->color), 'type' => 'color'])</div>
-                    <div>@include('admin/shared/input', ['name' => 'icon', 'label' => __('announcements::messages.categories.fields.icon'), 'value' => old('icon', $item->icon), 'help' => 'Ex: bi bi-star'])</div>
+                    <div>@include('admin/shared/input', ['name' => 'icon', 'label' => __('announcements::messages.categories.fields.icon'), 'value' => old('icon', $item->icon), 'help' => __('announcements::messages.categories.fields.icon_help')])</div>
                     <div>@include('admin/shared/input', ['name' => 'position', 'label' => __('announcements::messages.categories.fields.position'), 'value' => old('position', $item->position), 'type' => 'number', 'min' => 0])</div>
                 </div>
                 <div class="p-4 pt-0">

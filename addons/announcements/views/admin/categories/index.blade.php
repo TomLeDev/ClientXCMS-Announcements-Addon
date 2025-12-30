@@ -39,7 +39,11 @@
                                 <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">{{ $item->id }}</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-2">
-                                        <span class="w-4 h-4 rounded" style="background-color: {{ $item->color }}"></span>
+                                        @if($item->icon)
+                                            <i class="{{ $item->icon }}" style="color: {{ $item->color }}"></i>
+                                        @else
+                                            <span class="w-4 h-4 rounded" style="background-color: {{ $item->color }}"></span>
+                                        @endif
                                         <span class="text-sm font-medium text-gray-800 dark:text-gray-200">{{ $item->name }}</span>
                                     </div>
                                 </td>
