@@ -52,11 +52,14 @@ class AnnouncementsServiceProvider extends BaseAddonServiceProvider
         $this->loadMigrations();
         $this->loadTranslations();
         
+        // Add seeders using the proper method
+        $this->addSeeders([
+            \App\Addons\Announcements\Database\Seeders\AnnouncementCategorySeeder::class,
+            \App\Addons\Announcements\Database\Seeders\AnnouncementSeeder::class,
+        ]);
+        
         // Initialize default settings
         $this->initializeSettings();
-        
-        // Run seeders if tables are empty (first install)
-        $this->runSeeders();
         
         // Register admin routes
         Route::middleware(['web', 'admin'])
@@ -105,23 +108,6 @@ class AnnouncementsServiceProvider extends BaseAddonServiceProvider
                 ->name('announcements:publish-scheduled')
                 ->withoutOverlapping();
         });
-    }
-
-    /**
-     * Run seeders on first install.
-     */
-    protected function runSeeders(): void
-    {
-        // Only run if tables exist and are empty
-        try {
-            if (\Schema::hasTable('announcement_categories') && 
-                \App\Addons\Announcements\Models\AnnouncementCategory::count() === 0) {
-                $seeder = new AnnouncementsDatabaseSeeder();
-                $seeder->run();
-            }
-        } catch (\Exception $e) {
-            // Tables may not exist yet, skip seeding
-        }
     }
 
     /**

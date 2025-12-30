@@ -151,6 +151,10 @@ class AnnouncementRequest extends FormRequest
             throw new \Exception('Announcement not found in route');
         }
         
+        // Get cover_image_url from request (can be empty string)
+        $coverImageUrl = $this->request->get('cover_image_url', '');
+        $coverImageUrl = is_string($coverImageUrl) ? trim($coverImageUrl) : '';
+        
         $data = [
             'title' => $this->input('title'),
             'slug' => $this->input('slug') ?: $announcement->slug,
@@ -169,6 +173,8 @@ class AnnouncementRequest extends FormRequest
             'meta_keywords' => $this->input('meta_keywords'),
             'canonical_url' => $this->input('canonical_url'),
             'robots' => $this->input('robots', 'index,follow'),
+            // Set cover_image_url directly
+            'cover_image_url' => !empty($coverImageUrl) ? $coverImageUrl : null,
         ];
         
         // Handle published_at and auto-schedule
@@ -180,10 +186,6 @@ class AnnouncementRequest extends FormRequest
         } elseif ($data['status'] === 'published' && !$announcement->published_at) {
             $data['published_at'] = now();
         }
-        
-        // Handle cover_image_url - always update this field
-        $coverImageUrl = trim($this->input('cover_image_url', ''));
-        $data['cover_image_url'] = !empty($coverImageUrl) ? $coverImageUrl : null;
         
         // Update the announcement
         $announcement->update($data);

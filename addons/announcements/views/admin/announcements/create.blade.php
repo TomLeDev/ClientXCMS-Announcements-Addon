@@ -228,24 +228,23 @@
                                 <input type="datetime-local" 
                                     name="published_at" 
                                     id="published_at"
-                                    value="{{ old('published_at', $item->published_at?->format('Y-m-d\TH:i')) }}"
+                                    value="{{ old('published_at') }}"
                                     class="input-text">
                             </div>
                             <div>
                                 @include('admin/shared/input', [
                                     'name' => 'position', 
                                     'label' => __('announcements::messages.admin.fields.position'), 
-                                    'value' => old('position', $item->position ?? 0),
+                                    'value' => old('position', 0),
                                     'type' => 'number',
                                     'min' => 0
                                 ])
                             </div>
-                            <div class="flex items-end gap-4">
+                            <div class="flex items-center pt-7">
                                 @include('admin/shared/checkbox', [
                                     'name' => 'featured', 
                                     'label' => __('announcements::messages.admin.fields.featured'), 
-                                    'checked' => old('featured', $item->featured),
-                                    'help' => __('announcements::messages.admin.fields.featured_help')
+                                    'checked' => old('featured', false)
                                 ])
                             </div>
                         </div>
@@ -253,7 +252,7 @@
                             @include('admin/shared/checkbox', [
                                 'name' => 'show_author', 
                                 'label' => __('announcements::messages.admin.fields.show_author'), 
-                                'checked' => old('show_author', $item->show_author ?? true)
+                                'checked' => old('show_author', true)
                             ])
                         </div>
                     </div>

@@ -270,12 +270,11 @@
                                     'min' => 0
                                 ])
                             </div>
-                            <div class="flex items-end gap-4">
+                            <div class="flex items-center pt-7">
                                 @include('admin/shared/checkbox', [
                                     'name' => 'featured', 
                                     'label' => __('announcements::messages.admin.fields.featured'), 
-                                    'checked' => old('featured', $item->featured),
-                                    'help' => __('announcements::messages.admin.fields.featured_help')
+                                    'checked' => old('featured', $item->featured)
                                 ])
                             </div>
                         </div>
