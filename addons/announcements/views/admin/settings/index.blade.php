@@ -138,26 +138,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Update preview on input change
-    const previewInputs = document.querySelectorAll('[data-preview-update]');
-    previewInputs.forEach(input => {
-        input.addEventListener('input', updatePreview);
-        input.addEventListener('change', updatePreview);
+    // Update preview on input change - use name selectors
+    const previewFields = [
+        'announcements_discord_embed_title',
+        'announcements_discord_embed_description', 
+        'announcements_discord_embed_color',
+        'announcements_discord_content',
+        'announcements_discord_embed_footer',
+        'announcements_discord_embed_timestamp',
+        'announcements_discord_embed_image',
+        'announcements_discord_embed_author',
+        'announcements_discord_embed_field_category'
+    ];
+    
+    previewFields.forEach(name => {
+        const input = document.querySelector(`input[name="${name}"], textarea[name="${name}"]`);
+        if (input) {
+            input.addEventListener('input', updatePreview);
+            input.addEventListener('change', updatePreview);
+        }
     });
     
     // Initial preview
     updatePreview();
     
     function updatePreview() {
-        const title = document.getElementById('announcements_discord_embed_title')?.value || '{title}';
-        const description = document.getElementById('announcements_discord_embed_description')?.value || '{excerpt}';
-        const color = document.getElementById('announcements_discord_embed_color')?.value || '#3b82f6';
-        const content = document.getElementById('announcements_discord_content')?.value || '';
-        const footer = document.getElementById('announcements_discord_embed_footer')?.value || '';
-        const showAuthor = document.getElementById('announcements_discord_embed_author')?.checked || false;
-        const showImage = document.getElementById('announcements_discord_embed_image')?.checked || false;
-        const showTimestamp = document.getElementById('announcements_discord_embed_timestamp')?.checked || false;
-        const showCategory = document.getElementById('announcements_discord_embed_field_category')?.checked || false;
+        const title = document.querySelector('input[name="announcements_discord_embed_title"]')?.value || '{title}';
+        const description = document.querySelector('textarea[name="announcements_discord_embed_description"]')?.value || '{excerpt}';
+        const color = document.querySelector('input[name="announcements_discord_embed_color"]')?.value || '#3b82f6';
+        const content = document.querySelector('textarea[name="announcements_discord_content"]')?.value || '';
+        const footer = document.querySelector('input[name="announcements_discord_embed_footer"]')?.value || '';
+        const showAuthor = document.querySelector('input[name="announcements_discord_embed_author"]')?.checked || false;
+        const showImage = document.querySelector('input[name="announcements_discord_embed_image"]')?.checked || false;
+        const showTimestamp = document.querySelector('input[name="announcements_discord_embed_timestamp"]')?.checked || false;
+        const showCategory = document.querySelector('input[name="announcements_discord_embed_field_category"]')?.checked || false;
         
         // Replace variables with example values for preview
         const variables = {
@@ -235,7 +249,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const testBtn = document.getElementById('test-webhook-btn');
     if (testBtn) {
         testBtn.addEventListener('click', function() {
-            const url = document.getElementById('announcements_discord_webhook_url')?.value;
+            const urlInput = document.querySelector('input[name="announcements_discord_webhook_url"]');
+            const url = urlInput?.value;
             if (!url) {
                 alert('{{ __("announcements::messages.settings.discord.webhook_required") }}');
                 return;
@@ -404,8 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     'label' => __($translatePrefix . '.discord.content'), 
                                     'value' => setting('announcements_discord_content'),
                                     'rows' => 2,
-                                    'help' => __($translatePrefix . '.discord.content_help'),
-                                    'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_content']
+                                    'help' => __($translatePrefix . '.discord.content_help')
                                 ])
                             </div>
                             
@@ -428,8 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     @include('admin/shared/input', [
                                         'name' => 'announcements_discord_embed_title', 
                                         'label' => __($translatePrefix . '.discord.embed_title'), 
-                                        'value' => setting('announcements_discord_embed_title', '{title}'),
-                                        'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_title']
+                                        'value' => setting('announcements_discord_embed_title', '{title}')
                                     ])
                                 </div>
                                 <div>
@@ -437,8 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         'name' => 'announcements_discord_embed_color', 
                                         'label' => __($translatePrefix . '.discord.embed_color'), 
                                         'value' => setting('announcements_discord_embed_color', '#3b82f6'),
-                                        'type' => 'color',
-                                        'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_color']
+                                        'type' => 'color'
                                     ])
                                 </div>
                             </div>
@@ -448,8 +460,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     'name' => 'announcements_discord_embed_description', 
                                     'label' => __($translatePrefix . '.discord.embed_description'), 
                                     'value' => setting('announcements_discord_embed_description', '{excerpt}'),
-                                    'rows' => 2,
-                                    'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_description']
+                                    'rows' => 2
                                 ])
                             </div>
                             
@@ -457,8 +468,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 @include('admin/shared/input', [
                                     'name' => 'announcements_discord_embed_footer', 
                                     'label' => __($translatePrefix . '.discord.embed_footer'), 
-                                    'value' => setting('announcements_discord_embed_footer'),
-                                    'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_footer']
+                                    'value' => setting('announcements_discord_embed_footer')
                                 ])
                             </div>
                             
@@ -466,26 +476,22 @@ document.addEventListener('DOMContentLoaded', function() {
                                 @include('admin/shared/checkbox', [
                                     'name' => 'announcements_discord_embed_timestamp', 
                                     'label' => __($translatePrefix . '.discord.embed_timestamp'), 
-                                    'checked' => setting('announcements_discord_embed_timestamp', true),
-                                    'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_timestamp']
+                                    'checked' => setting('announcements_discord_embed_timestamp', true)
                                 ])
                                 @include('admin/shared/checkbox', [
                                     'name' => 'announcements_discord_embed_image', 
                                     'label' => __($translatePrefix . '.discord.embed_image'), 
-                                    'checked' => setting('announcements_discord_embed_image', true),
-                                    'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_image']
+                                    'checked' => setting('announcements_discord_embed_image', true)
                                 ])
                                 @include('admin/shared/checkbox', [
                                     'name' => 'announcements_discord_embed_author', 
                                     'label' => __($translatePrefix . '.discord.embed_author'), 
-                                    'checked' => setting('announcements_discord_embed_author', false),
-                                    'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_author']
+                                    'checked' => setting('announcements_discord_embed_author', false)
                                 ])
                                 @include('admin/shared/checkbox', [
                                     'name' => 'announcements_discord_embed_field_category', 
                                     'label' => __($translatePrefix . '.discord.embed_field_category'), 
-                                    'checked' => setting('announcements_discord_embed_field_category', true),
-                                    'attributes' => ['data-preview-update' => 'true', 'id' => 'announcements_discord_embed_field_category']
+                                    'checked' => setting('announcements_discord_embed_field_category', true)
                                 ])
                             </div>
                             
