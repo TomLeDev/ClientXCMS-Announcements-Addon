@@ -33,3 +33,4 @@ Route::post('announcement-categories-positions', [CategoryController::class, 'up
 // Settings
 Route::get('announcements-settings', [SettingsController::class, 'index'])->name('announcements-settings.index');
 Route::post('announcements-settings', [SettingsController::class, 'update'])->name('announcements-settings.update');
+Route::post('announcements-settings/test-discord', [SettingsController::class, 'testDiscord'])->name('announcements-settings.test-discord');

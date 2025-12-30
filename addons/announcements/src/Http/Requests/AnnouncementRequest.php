@@ -10,6 +10,7 @@
 namespace App\Addons\Announcements\Http\Requests;
 
 use App\Addons\Announcements\Models\Announcement;
+use App\Addons\Announcements\Services\AnnouncementStatsService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -137,6 +138,11 @@ class AnnouncementRequest extends FormRequest
             $announcement->save();
         }
         
+        // Send Discord notification if published
+        if ($announcement->status === 'published') {
+            $this->sendDiscordNotification($announcement);
+        }
+        
         return $announcement;
     }
 
@@ -150,6 +156,9 @@ class AnnouncementRequest extends FormRequest
         if (!$announcement) {
             throw new \Exception('Announcement not found in route');
         }
+        
+        // Check if becoming published (wasn't published before)
+        $wasPublished = $announcement->status === 'published';
         
         // Get cover_image_url from request (can be empty string)
         $coverImageUrl = $this->request->get('cover_image_url', '');
@@ -213,6 +222,24 @@ class AnnouncementRequest extends FormRequest
             $announcement->save();
         }
         
+        // Send Discord notification if just became published
+        if (!$wasPublished && $announcement->status === 'published') {
+            $this->sendDiscordNotification($announcement);
+        }
+        
         return $announcement;
+    }
+
+    /**
+     * Send Discord notification for an announcement.
+     */
+    protected function sendDiscordNotification(Announcement $announcement): void
+    {
+        try {
+            $statsService = app(AnnouncementStatsService::class);
+            $statsService->sendDiscordNotification($announcement);
+        } catch (\Exception $e) {
+            \Log::error('Failed to send Discord notification: ' . $e->getMessage());
+        }
     }
 }
