@@ -9,7 +9,7 @@
 
 return [
     'staff' => 'Équipe',
-    'media' => 'Médias',
+    'media' => 'Média',
     'danger_zone' => 'Zone de danger',
     'all' => 'Tous',
     
