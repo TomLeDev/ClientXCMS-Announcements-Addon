@@ -7,7 +7,7 @@
  * Year: 2024
  */
 
-namespace App\Addons\Announcements\Database\Seeders;
+namespace Database\Seeders;
 
 use App\Addons\Announcements\Models\AnnouncementCategory;
 use Illuminate\Database\Seeder;

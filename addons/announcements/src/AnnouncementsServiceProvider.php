@@ -10,7 +10,6 @@
 namespace App\Addons\Announcements;
 
 use App\Addons\Announcements\Console\Commands\PublishScheduledAnnouncementsCommand;
-use App\Addons\Announcements\Database\Seeders\AnnouncementsDatabaseSeeder;
 use App\Addons\Announcements\Http\Controllers\Admin\AnnouncementController;
 use App\Addons\Announcements\Http\Controllers\Admin\CategoryController;
 use App\Addons\Announcements\Http\Controllers\Admin\SettingsController;
@@ -20,6 +19,8 @@ use App\Core\Admin\Dashboard\AdminCountWidget;
 use App\Extensions\BaseAddonServiceProvider;
 use App\Models\Admin\Permission;
 use App\Services\SettingsService;
+use Database\Seeders\AnnouncementCategorySeeder;
+use Database\Seeders\AnnouncementSeeder;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -54,8 +55,8 @@ class AnnouncementsServiceProvider extends BaseAddonServiceProvider
         
         // Add seeders using the proper method
         $this->addSeeders([
-            \App\Addons\Announcements\Database\Seeders\AnnouncementCategorySeeder::class,
-            \App\Addons\Announcements\Database\Seeders\AnnouncementSeeder::class,
+            AnnouncementSeeder::class,
+            AnnouncementCategorySeeder::class,
         ]);
         
         // Initialize default settings
